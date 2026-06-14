@@ -122,7 +122,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 <Smartphone size={14} />
-                <span>تصفح تطبيق آمنة</span>
+                <span>تصفح تطبيق أنيقة</span>
               </Link>
               <Link
                 href="/register"
