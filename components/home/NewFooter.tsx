@@ -1,7 +1,5 @@
-import Link from 'next/link'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
-import { getContentMulti } from '@/lib/content'
 
 const socials = [
   { type: 'snapchat', href: '#', label: 'سناب شات' },
@@ -36,14 +34,7 @@ function SocialIcon({ type }: { type: string }) {
   }
 }
 
-export default async function NewFooter() {
-  const content = await getContentMulti([
-    'footer_email', 'footer_phone', 'footer_location', 'footer_copyright',
-    'footer_contact_title', 'footer_social_title', 'footer_newsletter_title',
-    'footer_newsletter_placeholder', 'footer_newsletter_btn',
-    'logo_title', 'logo_subtitle', 'logo_image',
-  ])
-
+export default function NewFooter({ content = {} }: { content?: Record<string, string> }) {
   return (
     <footer className="bg-[#F7F1FB] border-t border-[#E8DFF2]/40 text-[#2D1955] py-10" dir="rtl">
       <div className="container-global">

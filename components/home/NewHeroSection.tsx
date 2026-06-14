@@ -31,15 +31,24 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
             </div>
           </div>
 
-          <div className="text-center lg:text-right flex flex-col items-center lg:items-end justify-center px-4 lg:px-8 py-8 lg:py-0" style={{ direction: 'rtl' }}>
-            <span className="inline-block font-arabic font-bold text-[#D4B26A] text-[18px] tracking-wide mb-1">
+          <div className="flex flex-col items-center text-center lg:items-end lg:text-right justify-center px-4 lg:px-8 py-8 lg:py-0" style={{ direction: 'rtl' }}>
+            <span className="inline-block font-arabic font-medium text-[#C8A96E] text-[30px] mb-2 text-center lg:text-right w-full">
               {badge}
             </span>
-            <h1 className="font-arabic font-extrabold text-[32px] md:text-[44px] lg:text-[58px] leading-[1.3] text-[#2D1955]">
-              {title}
-              <br />
-              <span className="text-[#2D1955]">{subtitle}</span>
-            </h1>
+            <div className="mt-2 w-full" style={{ direction: 'rtl' }}>
+              <h1
+                className="font-arabic font-black text-[#2D1955] leading-[1.25] sm:whitespace-nowrap"
+                style={{ fontSize: 'clamp(32px, 3.5vw, 60px)' }}
+              >
+                الاقتصـاد الرقـمي
+              </h1>
+              <h2
+                className="font-arabic font-black text-[#2D1955] leading-[1.25] sm:whitespace-nowrap"
+                style={{ fontSize: 'clamp(26px, 2.8vw, 50px)' }}
+              >
+                لقطاع الخدمات النسائية
+              </h2>
+            </div>
             <p className="text-[#6B5B8A] font-arabic text-[14.5px] leading-[1.75] mt-5 max-w-[480px]">
               {description}
             </p>
@@ -63,7 +72,7 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
 
           <div className="hidden lg:flex items-center justify-center flex-shrink-0" style={{ direction: 'rtl' }}>
             <div className="w-[320px] h-[460px] bg-white rounded-[28px] shadow-[0_12px_45px_rgba(107,76,193,0.06)] border border-[#E8DFF2]/40 p-5 flex flex-col justify-between select-none">
-              
+
               <div className="relative w-full h-[95px] flex flex-col justify-between">
                 <span className="font-arabic text-[11px] text-[#6B5B8A] font-bold self-start">
                   نمو القطاع
@@ -109,7 +118,7 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
                     <circle cx="70" cy="42" r="1.5" fill="#D4B26A" opacity="0.6" />
                   </svg>
                 </div>
-                
+
                 <div className="flex flex-col gap-2.5 text-right flex-1">
                   <div>
                     <p className="font-arabic text-[10.5px] text-[#6B5B8A] leading-tight font-bold">المنشآت المسجلة</p>
@@ -130,7 +139,7 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
                     </div>
                     <span className="font-arabic text-[9.5px] text-[#6B5B8A] font-bold">المعارض</span>
                   </div>
-                  
+
                   <div className="flex flex-col items-center gap-1 w-[46px]">
                     <div className="w-8 h-8 rounded-full bg-[#F7F1FB] border border-[#E8DFF2]/40 flex items-center justify-center text-[#6B5B8A]">
                       <BookOpen size={14} className="stroke-[1.8]" />
@@ -159,7 +168,7 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
                     <span className="font-arabic text-[9.5px] text-[#6B5B8A] font-bold">الصالونات</span>
                   </div>
                 </div>
-                
+
                 <div className="w-full flex flex-col items-center mt-0.5">
                   <svg viewBox="0 0 280 8" className="w-full h-1.5 text-[#C8BAD8]/70">
                     <path d="M 12,2 L 12,5 L 268,5 L 268,2" fill="none" stroke="currentColor" strokeWidth="1" />
