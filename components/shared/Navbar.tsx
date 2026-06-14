@@ -62,7 +62,7 @@ export default function Navbar() {
               className="border border-[#D4B26A] text-[#D4B26A] hover:bg-[#FAF6EE] text-[11px] xl:text-[13px] font-arabic font-bold h-[36px] xl:h-[40px] px-2.5 xl:px-4 rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap transition-all"
             >
               <Smartphone size={14} className="stroke-[2.2]" />
-              <span>تصفح تطبيق آمنة</span>
+              <span>تصفح تطبيق أنيقة </span>
             </Link>
             <Link
               href="/register"
