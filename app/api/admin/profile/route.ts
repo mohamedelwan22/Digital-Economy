@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { getServerSession } from 'next-auth'
 import { prisma } from '@/lib/db'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/auth'
 
 export async function GET() {
   const session = await getServerSession(authOptions)
