@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model SiteContent {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  type      String   @default("text")
+  section   String   @default("general")
+  updatedAt DateTime @updatedAt
+}
+
+model Sector {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  icon        String   @default("")
+  image       String   @default("")
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Stat {
+  id    String @id @default(cuid())
+  icon  String @default("")
+  value String
+  label String
+  order Int    @default(0)
+}
+
+model Partner {
+  id       String  @id @default(cuid())
+  name     String
+  logo     String  @default("")
+  url      String?
+  isActive Boolean @default(true)
+  order    Int     @default(0)
+}
+
+model BusinessRegistration {
+  id        String   @id @default(cuid())
+  name      String
+  ownerName String
+  phone     String
+  email     String
+  sector    String
+  city      String
+  address   String?
+  commercialRegister String?
+  files     String?
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("editor")
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}
