@@ -7,7 +7,7 @@ const footerLinks = [
   { href: '/about', label: 'عن المبادرة' },
   { href: '/sectors', label: 'القطاعات المستهدفة' },
   { href: '/register', label: 'التسجيل' },
-  { href: '/reports', label: 'المؤتمرات والتقارير' },
+  { href: '/reports', label: 'المؤشرات والتقارير' },
   { href: '/partners', label: 'الشركاء' },
   { href: '/contact', label: 'تواصل معنا' },
 ]

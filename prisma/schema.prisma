@@ -21,6 +21,23 @@ model Sector {
   description String
   icon        String   @default("")
   image       String   @default("")
+  fullDescription String @default("")
+  stats       String   @default("[]")
+  ctaText     String   @default("")
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Conference {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @default("")
+  icon        String   @default("")
+  image       String   @default("")
+  value       String   @default("")
+  label       String   @default("")
   order       Int      @default(0)
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
@@ -33,6 +50,14 @@ model Stat {
   value String
   label String
   order Int    @default(0)
+}
+
+model Statistic {
+  id       String  @id @default(cuid())
+  title    String
+  value    String
+  order    Int     @default(0)
+  isActive Boolean @default(true)
 }
 
 model Partner {

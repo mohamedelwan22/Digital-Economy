@@ -11,7 +11,7 @@ const navLinks = [
   { href: '/', label: 'الرئيسية' },
   { href: '/about', label: 'عن المبادرة' },
   { href: '/sectors', label: 'القطاعات المستهدفة' },
-  { href: '/reports', label: 'المؤتمرات والتقارير' },
+  { href: '/reports', label: 'المؤشرات والتقارير' },
   { href: '/register', label: 'التسجيل في المبادرة' },
   { href: '/partners', label: 'الشركاء والداعمون' },
   { href: '/contact', label: 'تواصل معنا' },
@@ -59,10 +59,11 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 flex-shrink-0">
             <Link
               href="/app-browse"
-              className="border border-[#D4B26A] text-[#D4B26A] hover:bg-[#FAF6EE] text-[11px] xl:text-[13px] font-arabic font-bold h-[36px] xl:h-[40px] px-2.5 xl:px-4 rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap transition-all"
+              className="relative bg-gradient-to-r from-[#D4B26A] to-[#C9A24E] text-white text-[11px] xl:text-[13px] font-arabic font-bold h-[36px] xl:h-[40px] px-3 xl:px-5 rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap transition-all duration-300 shadow-[0_2px_12px_rgba(212,178,106,0.35)] hover:shadow-[0_4px_20px_rgba(212,178,106,0.5)] hover:scale-[1.04] active:scale-[0.97]"
             >
-              <Smartphone size={14} className="stroke-[2.2]" />
-              <span>تصفح تطبيق أنيقة </span>
+              <Smartphone size={16} className="stroke-[2.2] transition-transform duration-300 group-hover:rotate-[-8deg]" />
+              <span>تصفح تطبيق أنيقة</span>
+              <span className="absolute inset-0 rounded-[8px] bg-white/0 hover:bg-white/10 transition-colors"></span>
             </Link>
             <Link
               href="/register"
@@ -118,10 +119,10 @@ export default function Navbar() {
             <div className="flex flex-col gap-2 mt-2 pt-3 border-t border-white/10">
               <Link
                 href="/app-browse"
-                className="border border-white/70 text-white text-[13px] font-arabic font-bold h-[40px] rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap"
+                className="bg-gradient-to-r from-[#D4B26A] to-[#C9A24E] text-white text-[13px] font-arabic font-bold h-[40px] rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap shadow-[0_2px_12px_rgba(212,178,106,0.3)]"
                 onClick={() => setIsOpen(false)}
               >
-                <Smartphone size={14} />
+                <Smartphone size={16} />
                 <span>تصفح تطبيق أنيقة</span>
               </Link>
               <Link

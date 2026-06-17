@@ -52,7 +52,7 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
             <p className="text-[#6B5B8A] font-arabic text-[14.5px] leading-[1.75] mt-5 max-w-[480px]">
               {description}
             </p>
-            <div className="flex flex-col sm:flex-row items-center gap-3 mt-6 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-3 mt-8 w-full sm:w-auto">
               <Link
                 href="/register"
                 className="bg-[#6B4CC1] hover:bg-[#5438A0] text-white text-[13px] font-arabic font-bold h-[38px] px-[22px] rounded-[10px] flex items-center justify-center gap-1.5 transition-all shadow-sm w-full sm:w-auto"
@@ -62,9 +62,9 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
               </Link>
               <Link
                 href="/app-browse"
-                className="border border-[#D4B26A] text-[#D4B26A] hover:bg-[#FAF6EE] text-[13px] font-arabic font-bold h-[38px] px-[20px] rounded-[10px] flex items-center justify-center gap-1.5 transition-all w-full sm:w-auto"
+                className="relative bg-gradient-to-r from-[#D4B26A] to-[#C9A24E] text-white text-[13px] font-arabic font-bold h-[38px] px-[20px] rounded-[10px] flex items-center justify-center gap-1.5 transition-all duration-300 shadow-[0_2px_12px_rgba(212,178,106,0.35)] hover:shadow-[0_4px_20px_rgba(212,178,106,0.5)] hover:scale-[1.04] active:scale-[0.97] w-full sm:w-auto"
               >
-                <Smartphone size={15} className="stroke-[2.2]" />
+                <Smartphone size={17} className="stroke-[2.2]" />
                 <span>{btn2Text}</span>
               </Link>
             </div>

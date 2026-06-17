@@ -1,14 +1,6 @@
 import { Mail, Phone, MapPin } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
 
-const socials = [
-  { type: 'snapchat', href: '#', label: 'سناب شات' },
-  { type: 'linkedin', href: '#', label: 'لينكد إن' },
-  { type: 'instagram', href: '#', label: 'انستغرام' },
-  { type: 'twitter', href: '#', label: 'تويتر' },
-  { type: 'youtube', href: '#', label: 'يوتيوب' },
-]
-
 function SnapchatIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -22,7 +14,7 @@ function SocialIcon({ type }: { type: string }) {
     case 'snapchat':
       return <SnapchatIcon />
     case 'instagram':
-      return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+      return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="24" height="24" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
     case 'twitter':
       return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>
     case 'linkedin':
@@ -34,7 +26,22 @@ function SocialIcon({ type }: { type: string }) {
   }
 }
 
+const socialTypes = ['snapchat', 'instagram', 'twitter', 'linkedin', 'youtube']
+const socialLabels: Record<string, string> = {
+  snapchat: 'سناب شات',
+  instagram: 'انستغرام',
+  twitter: 'تويتر',
+  linkedin: 'لينكد إن',
+  youtube: 'يوتيوب',
+}
+
 export default function NewFooter({ content = {} }: { content?: Record<string, string> }) {
+  const socials = socialTypes.map((type) => ({
+    type,
+    href: content[`footer_${type}`] || '#',
+    label: socialLabels[type],
+  }))
+
   return (
     <footer className="bg-[#F7F1FB] border-t border-[#E8DFF2]/40 text-[#2D1955] py-10" dir="rtl">
       <div className="container-global">
@@ -77,6 +84,8 @@ export default function NewFooter({ content = {} }: { content?: Record<string, s
                 <a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-[34px] h-[34px] rounded-full bg-[#E8DFF2]/65 hover:bg-[#6B4CC1] flex items-center justify-center text-[#2D1955] hover:text-white transition-all duration-200 hover:-translate-y-0.5"
                   aria-label={s.label}
                 >

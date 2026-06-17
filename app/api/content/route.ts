@@ -4,6 +4,14 @@ import { revalidatePath } from 'next/cache'
 
 const allPaths = ['/', '/about', '/sectors', '/reports', '/partners', '/contact', '/register']
 
+function revalidateAll() {
+  revalidatePath('/', 'layout')
+  revalidatePath('/')
+  for (const path of allPaths) {
+    revalidatePath(path)
+  }
+}
+
 export async function GET() {
   const content = await prisma.siteContent.findMany()
   return NextResponse.json(content)
@@ -21,26 +29,31 @@ export async function PATCH(request: Request) {
     })
   }
 
-  for (const path of allPaths) {
-    revalidatePath(path)
-  }
-
+  revalidateAll()
   return NextResponse.json({ success: true })
 }
 
 export async function POST(request: Request) {
   const body = await request.json()
-  const { key, value, type, section } = body as { key: string; value: string; type?: string; section?: string }
 
-  await prisma.siteContent.upsert({
-    where: { key },
-    update: { value },
-    create: { key, value, type: type || 'text', section: section || 'general' },
-  })
-
-  for (const path of allPaths) {
-    revalidatePath(path)
+  if (body.updates) {
+    const { updates } = body as { updates: { key: string; value: string }[] }
+    for (const { key, value } of updates) {
+      await prisma.siteContent.upsert({
+        where: { key },
+        update: { value },
+        create: { key, value, type: 'text', section: 'general' },
+      })
+    }
+  } else {
+    const { key, value, type, section } = body as { key: string; value: string; type?: string; section?: string }
+    await prisma.siteContent.upsert({
+      where: { key },
+      update: { value },
+      create: { key, value, type: type || 'text', section: section || 'general' },
+    })
   }
 
+  revalidateAll()
   return NextResponse.json({ success: true })
 }

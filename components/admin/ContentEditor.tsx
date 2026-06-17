@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import { Save } from 'lucide-react'
@@ -18,6 +19,7 @@ interface ContentEditorProps {
 }
 
 export default function ContentEditor({ title, fields }: ContentEditorProps) {
+  const router = useRouter()
   const [content, setContent] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
@@ -43,8 +45,9 @@ export default function ContentEditor({ title, fields }: ContentEditorProps) {
     })
     setSaving(false)
     setSaved(true)
+    router.refresh()
     setTimeout(() => setSaved(false), 2000)
-  }, [content, fields])
+  }, [content, fields, router])
 
   const handleImageUpload = useCallback(async (key: string, file: File) => {
     const formData = new FormData()

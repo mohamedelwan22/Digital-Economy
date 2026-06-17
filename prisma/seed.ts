@@ -97,7 +97,7 @@ async function main() {
     { key: 'nav_link_home', value: 'الرئيسية', type: 'text', section: 'navbar' },
     { key: 'nav_link_about', value: 'عن المبادرة', type: 'text', section: 'navbar' },
     { key: 'nav_link_sectors', value: 'القطاعات المستهدفة', type: 'text', section: 'navbar' },
-    { key: 'nav_link_reports', value: 'المؤتمرات والتقارير', type: 'text', section: 'navbar' },
+    { key: 'nav_link_reports', value: 'المؤشرات والتقارير', type: 'text', section: 'navbar' },
     { key: 'nav_link_register', value: 'التسجيل في المبادرة', type: 'text', section: 'navbar' },
     { key: 'nav_link_partners', value: 'الشركاء والداعمون', type: 'text', section: 'navbar' },
     { key: 'nav_link_contact', value: 'تواصل معنا', type: 'text', section: 'navbar' },
@@ -151,6 +151,23 @@ async function main() {
       await prisma.sector.update({ where: { id: existing.id }, data: sector })
     } else {
       await prisma.sector.create({ data: sector })
+    }
+  }
+
+  const statistics = [
+    { title: 'منشأة مستهدفة', value: '25,000+', order: 1, isActive: true },
+    { title: 'قطاع خدمي', value: '15+', order: 2, isActive: true },
+    { title: 'مدينة مستهدفة', value: '50+', order: 3, isActive: true },
+    { title: 'فرصة تدريبية', value: '10,000+', order: 4, isActive: true },
+    { title: 'فرصة استثمارية', value: '300+', order: 5, isActive: true },
+  ]
+
+  for (const stat of statistics) {
+    const existing = await prisma.statistic.findFirst({ where: { order: stat.order } })
+    if (existing) {
+      await prisma.statistic.update({ where: { id: existing.id }, data: stat })
+    } else {
+      await prisma.statistic.create({ data: stat })
     }
   }
 

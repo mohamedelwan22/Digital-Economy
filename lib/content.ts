@@ -1,7 +1,6 @@
-import { cache } from 'react'
 import { prisma } from './db'
 
-export const getContent = cache(async function (
+export async function getContent(
   key: string,
   defaultValue = ''
 ): Promise<string> {
@@ -11,9 +10,9 @@ export const getContent = cache(async function (
   } catch {
     return defaultValue
   }
-})
+}
 
-export const getContentMulti = cache(async function (
+export async function getContentMulti(
   keys: string[]
 ): Promise<Record<string, string>> {
   try {
@@ -28,4 +27,4 @@ export const getContentMulti = cache(async function (
   } catch {
     return {}
   }
-})
+}

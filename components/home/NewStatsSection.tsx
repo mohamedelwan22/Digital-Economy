@@ -9,8 +9,12 @@ const defaultStats = [
   { icon: TrendingUp, value: '+25,000', label: 'منشأة مستهدفة' },
 ]
 
-const iconMap: Record<string, React.ElementType> = {
-  TrendingUp, Building2, MapPin, GraduationCap, Users,
+const titleIconMap: Record<string, React.ElementType> = {
+  'منشأة مستهدفة': TrendingUp,
+  'قطاع خدمي': Building2,
+  'مدينة مستهدفة': MapPin,
+  'فرصة تدريبية': GraduationCap,
+  'فرصة استثمارية': Users,
 }
 
 interface NewStatsSectionProps {
@@ -18,13 +22,16 @@ interface NewStatsSectionProps {
 }
 
 export default async function NewStatsSection({ title }: NewStatsSectionProps) {
-  const dbStats = await prisma.stat.findMany({ orderBy: { order: 'asc' } }).catch(() => [])
+  const dbStats = await prisma.statistic.findMany({
+    where: { isActive: true },
+    orderBy: { order: 'asc' },
+  }).catch(() => [])
 
   const stats = dbStats.length > 0
     ? dbStats.map((s) => ({
-        icon: iconMap[s.icon] || TrendingUp,
+        icon: titleIconMap[s.title] || Users,
         value: s.value,
-        label: s.label,
+        label: s.title,
       }))
     : defaultStats
 

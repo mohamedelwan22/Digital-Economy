@@ -10,6 +10,9 @@ import Image from 'next/image'
 const settingsFields = [
   { key: 'site_name', label: 'اسم المبادرة', type: 'text' },
   { key: 'site_email', label: 'البريد الإلكتروني الرسمي', type: 'text' },
+  { key: 'contact_email', label: 'البريد الإلكتروني للتواصل', type: 'text' },
+  { key: 'contact_phone', label: 'رقم الهاتف للتواصل', type: 'text' },
+  { key: 'contact_address', label: 'العنوان', type: 'text' },
   { key: 'site_status', label: 'حالة الموقع', type: 'select', options: ['active', 'maintenance'] },
   { key: 'site_description', label: 'وصف الموقع (SEO)', type: 'textarea' },
   { key: 'site_keywords', label: 'الكلمات المفتاحية (SEO)', type: 'textarea' },

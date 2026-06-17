@@ -17,6 +17,7 @@ import {
   LogOut,
   Info,
   Shield,
+  BarChartHorizontal,
 } from 'lucide-react'
 
 const sidebarLinks = [
@@ -24,7 +25,8 @@ const sidebarLinks = [
   { href: '/admin/home', label: 'تعديل الرئيسية', icon: Edit3 },
   { href: '/admin/about', label: 'عن المبادرة', icon: Info },
   { href: '/admin/target-sectors', label: 'القطاعات المستهدفة', icon: Store },
-  { href: '/admin/reports', label: 'المؤتمرات والتقارير', icon: BarChart3 },
+  { href: '/admin/statistics', label: 'الإحصائيات', icon: BarChartHorizontal },
+  { href: '/admin/reports', label: 'المؤشرات والتقارير', icon: BarChart3 },
   { href: '/admin/businesses', label: 'المنشآت المسجلة', icon: Building2 },
   { href: '/admin/registrations', label: 'التسجيلات', icon: ClipboardList },
   { href: '/admin/messages', label: 'الرسائل', icon: MessageSquare },
