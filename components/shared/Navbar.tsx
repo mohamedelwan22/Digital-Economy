@@ -118,7 +118,7 @@ export default function Navbar() {
             })}
             <div className="flex flex-col gap-2 mt-2 pt-3 border-t border-white/10">
               <Link
-                href="/app-browse"
+                href="https://apps.apple.com/sa/app/aniqa-%D8%A3%D9%86%D9%8A%D9%82%D8%A9/id6745837233?l=ar"
                 className="bg-gradient-to-r from-[#D4B26A] to-[#C9A24E] text-white text-[13px] font-arabic font-bold h-[40px] rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap shadow-[0_2px_12px_rgba(212,178,106,0.3)]"
                 onClick={() => setIsOpen(false)}
               >
