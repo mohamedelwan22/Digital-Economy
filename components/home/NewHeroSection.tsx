@@ -23,23 +23,31 @@ export default function NewHeroSection({ badge, title, subtitle, description, bt
       />
 
       <div className="relative z-10 flex items-center justify-center min-h-[600px] md:min-h-[650px] lg:min-h-[680px]">
-          <div className="flex flex-col justify-center max-w-[600px] mx-auto">
-            <span className="font-arabic font-bold text-[#C8A96E] text-[22px] md:text-[28px] lg:text-[32px] mb-4 inline-block">
+          <div className="flex flex-col items-center justify-center">
+            <span
+              className="font-semibold text-[#C7A04E] text-[24px] mb-[18px]"
+              style={{ fontFamily: '"IBM Plex Sans Arabic", "Tajawal", sans-serif' }}
+            >
               {badge}
             </span>
 
-            <h1 className="font-arabic font-black text-[#2D1955] leading-[1.2] text-[40px] md:text-[52px] lg:text-[62px] xl:text-[68px]">
-              الاقتصاد الرقمي
-            </h1>
-            <h2 className="font-arabic font-black text-[#2D1955] leading-[1.2] text-[32px] md:text-[42px] lg:text-[50px] xl:text-[56px] mt-2">
+            <h1
+              className="font-bold text-[#2E1463] text-[68px] max-w-[820px] text-center"
+              style={{ fontFamily: '"IBM Plex Sans Arabic", "Tajawal", sans-serif', lineHeight: '1.15', letterSpacing: '-0.5px' }}
+            >
+              الاقتصاد الرقمي<br />
               لقطاع الخدمات النسائية
-            </h2>
+            </h1>
 
-            <p className="font-arabic text-[#4A3578] text-[16px] md:text-[17px] lg:text-[18px] font-semibold leading-[2] mt-8 max-w-[450px]">
-              {description}
+            <p
+              className="text-[#5E4E7A] text-[22px] font-medium max-w-[760px] text-center"
+              style={{ fontFamily: '"IBM Plex Sans Arabic", "Tajawal", sans-serif', lineHeight: '1.9' }}
+            >
+              منظومة رقمية متكاملة لتمكين المنشآت النسائية وربطها<br />
+              بالعملاء وتعزيز جودة الخدمات وخلق فرص اقتصادية جديدة
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-10">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 mt-[10px]">
               <Link
                 href="/register"
                 className="bg-[#6B4CC1] hover:bg-[#5438A0] text-white text-[14px] md:text-[15px] font-arabic font-bold h-[48px] md:h-[52px] px-[28px] md:px-[32px] rounded-[12px] flex items-center justify-center gap-2 transition-all shadow-[0_4px_16px_rgba(107,76,193,0.25)] hover:shadow-[0_6px_24px_rgba(107,76,193,0.35)] hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"

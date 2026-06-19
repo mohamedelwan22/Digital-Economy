@@ -57,14 +57,16 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 flex-shrink-0">
-            <Link
-              href="/app-browse"
+            <a
+              href="https://apps.apple.com/sa/app/aniqa-%D8%A3%D9%86%D9%8A%D9%82%D8%A9/id6745837233?l=ar"
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative bg-gradient-to-r from-[#D4B26A] to-[#C9A24E] text-white text-[11px] xl:text-[13px] font-arabic font-bold h-[36px] xl:h-[40px] px-3 xl:px-5 rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap transition-all duration-300 shadow-[0_2px_12px_rgba(212,178,106,0.35)] hover:shadow-[0_4px_20px_rgba(212,178,106,0.5)] hover:scale-[1.04] active:scale-[0.97]"
             >
               <Smartphone size={16} className="stroke-[2.2] transition-transform duration-300 group-hover:rotate-[-8deg]" />
               <span>تصفح تطبيق أنيقة</span>
               <span className="absolute inset-0 rounded-[8px] bg-white/0 hover:bg-white/10 transition-colors"></span>
-            </Link>
+            </a>
             <Link
               href="/register"
               className="bg-[#6B4CC1] hover:bg-[#5438A0] text-white text-[11px] xl:text-[13px] font-arabic font-bold h-[36px] xl:h-[40px] px-2.5 xl:px-4 rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap transition-all shadow-sm"
@@ -117,14 +119,16 @@ export default function Navbar() {
               )
             })}
             <div className="flex flex-col gap-2 mt-2 pt-3 border-t border-white/10">
-              <Link
+              <a
                 href="https://apps.apple.com/sa/app/aniqa-%D8%A3%D9%86%D9%8A%D9%82%D8%A9/id6745837233?l=ar"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-[#D4B26A] to-[#C9A24E] text-white text-[13px] font-arabic font-bold h-[40px] rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap shadow-[0_2px_12px_rgba(212,178,106,0.3)]"
                 onClick={() => setIsOpen(false)}
               >
                 <Smartphone size={16} />
                 <span>تصفح تطبيق أنيقة</span>
-              </Link>
+              </a>
               <Link
                 href="/register"
                 className="bg-white text-[#6B4FA0] text-[13px] font-arabic font-bold h-[40px] rounded-[8px] flex items-center justify-center gap-[6px] whitespace-nowrap"
