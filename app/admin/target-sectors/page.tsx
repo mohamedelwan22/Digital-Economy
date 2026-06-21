@@ -33,6 +33,8 @@ export default function AdminTargetSectorsPage() {
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [uploading, setUploading] = useState(false)
+  const [uploadError, setUploadError] = useState('')
+  const [saveError, setSaveError] = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -63,12 +65,16 @@ export default function AdminTargetSectorsPage() {
     const file = e.target.files?.[0]
     if (!file || !editing) return
     setUploading(true)
+    setUploadError('')
     const formData = new FormData()
     formData.append('file', file)
     const res = await fetch('/api/upload', { method: 'POST', body: formData })
     const data = await res.json()
-    if (data.url) {
+    if (res.ok && data.url) {
       setEditing({ ...editing, image: data.url })
+      e.target.value = ''
+    } else {
+      setUploadError(data.error || 'فشل رفع الصورة')
     }
     setUploading(false)
   }
@@ -76,28 +82,36 @@ export default function AdminTargetSectorsPage() {
   const handleSave = async () => {
     if (!editing) return
     setSaving(true)
+    setSaveError('')
     const body = { ...editing }
+    let res
     if (body.id) {
-      await fetch('/api/sectors', {
+      res = await fetch('/api/sectors', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
     } else {
       const { id, ...data } = body
-      await fetch('/api/sectors', {
+      res = await fetch('/api/sectors', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
+    }
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: 'فشل الحفظ' }))
+      setSaveError(err.error || 'فشل الحفظ')
+      setSaving(false)
+      return
     }
     setSaving(false)
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
     setShowForm(false)
     setEditing(null)
-    const res = await fetch('/api/sectors')
-    setSectors(await res.json())
+    const sectorsRes = await fetch('/api/sectors')
+    setSectors(await sectorsRes.json())
   }
 
   return (
@@ -158,6 +172,9 @@ export default function AdminTargetSectorsPage() {
                   {uploading ? '...' : 'رفع'}
                 </button>
               </div>
+              {uploadError && (
+                <p className="text-red-500 text-sm mt-1">{uploadError}</p>
+              )}
               {editing.image && (
                 <img src={editing.image} alt="معاينة" className="mt-2 h-24 w-auto rounded-lg border border-border object-cover" />
               )}
@@ -188,6 +205,9 @@ export default function AdminTargetSectorsPage() {
                 </label>
               </div>
             </div>
+            {saveError && (
+              <p className="text-red-500 text-sm">{saveError}</p>
+            )}
             <Button variant="primary" onClick={handleSave} disabled={saving}>
               <Save size={18} /> {saving ? 'جاري الحفظ...' : saved ? 'تم الحفظ ✓' : 'حفظ'}
             </Button>

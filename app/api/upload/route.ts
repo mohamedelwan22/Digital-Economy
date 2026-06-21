@@ -1,4 +1,8 @@
 import { NextResponse } from 'next/server'
+import { writeFile, mkdir } from 'fs/promises'
+import { join } from 'path'
+
+export const runtime = 'nodejs'
 
 export async function POST(request: Request) {
   try {
@@ -11,10 +15,10 @@ export async function POST(request: Request) {
 
     const buffer = Buffer.from(await file.arrayBuffer())
     const filename = `${Date.now()}-${file.name}`
-    const { writeFile } = await import('fs/promises')
-    const { join } = await import('path')
+    const uploadDir = join(process.cwd(), 'public', 'uploads')
 
-    await writeFile(join(process.cwd(), 'public', 'uploads', filename), buffer)
+    await mkdir(uploadDir, { recursive: true })
+    await writeFile(join(uploadDir, filename), buffer)
 
     return NextResponse.json({ url: `/uploads/${filename}` })
   } catch (error) {
