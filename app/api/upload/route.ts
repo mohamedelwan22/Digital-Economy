@@ -14,7 +14,8 @@ export async function POST(request: Request) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer())
-    const filename = `${Date.now()}-${file.name}`
+    const sanitized = file.name.toLowerCase().replace(/[^\w.-]/g, '-').replace(/-+/g, '-')
+    const filename = `${Date.now()}-${sanitized}`
     const uploadDir = join(process.cwd(), 'public', 'uploads')
 
     await mkdir(uploadDir, { recursive: true })
